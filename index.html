@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="canonical" href="https://ianisbrebion.fr">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ianis Brébion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no">
+    <title>Ianis Brébion | Développeur Web</title>
     <meta name="theme-color" content="#e94560">
     <link rel="shortcut icon" type="image/icon" href="favicon.ico"/>
     <style>
@@ -24,7 +25,7 @@
         }
     
         body {
-            font-family: Lucida Sans, Lucida Grande, Lucida Sans Unicode, Luxi Sans, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0 auto;
             background: #1a1a2e;
             color:#575791;
@@ -96,7 +97,6 @@
         .app_welcome {
             height: 100%;
             position: relative;
-            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -111,6 +111,28 @@
             width: 100%;
             top: 50%;
             margin-top: -60px;
+        }
+
+        .app_welcome__photo {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60%;
+            left: 20%;
+            padding-bottom: 80%;
+            overflow: hidden;
+            background: #222 center center no-repeat;
+            background-size: cover;
+            z-index: -1;
+            border: 5px solid #ff2549;
+            background: #1a1a2e;
+            box-shadow: 0 0 0px 5px #1e3985 inset;
+        }
+
+        .app_welcome__photo--visible {
+            display: block;
+            display: none;
         }
 
         @keyframes welcomeMain {
@@ -198,6 +220,16 @@
             animation: welcomeSecond 5s 2s infinite alternate;
         }
 
+        .app_noselect {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .app_welcome__scroll {
             position: absolute;
             bottom: 20px;
@@ -210,6 +242,19 @@
             background: #1e3985;
             border-radius: 12px;
             cursor: pointer;
+            opacity: 1;
+            transition: opacity .4s;
+        }
+
+        .app_welcome__scroll:focus, 
+        .app_welcome__scroll:active,
+        .app_welcome__scroll {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .app_welcome__scroll--hidden {
+            opacity: 0;
         }
 
         .app_welcome__scroll__ball {
@@ -232,17 +277,12 @@
             100% {opacity: 0; transform: none;}
         }
 
-        #skills {
-            padding-top: 100px;
-        }
-
         .app_skills {
             display: grid;
             margin: auto;
             max-width: 1000px;
             padding: 0 20px;
             gap: 50px;
-            margin-bottom: 50px;
         }
 
         .app_skills__title {
@@ -268,9 +308,10 @@
             text-transform: uppercase;
             transform-origin: top left;
             color: #0e1425;
-            font-size: 50px;
+            font-size: 60px;
             z-index: -1;
             width: 100%;
+            margin-top: -10px;
             text-align: center;
         }
 
@@ -292,7 +333,7 @@
 
         .app_content__bg {
             margin: auto;
-            padding: 40px 0;
+            padding: 50px 0;
         }
 
         .app_content__bg--alt {
@@ -300,7 +341,7 @@
         }
 
         .app_content {
-            padding: 0 20px;
+            padding: 0 30px;
             max-width: 700px;
             margin: auto;
         }
@@ -327,10 +368,20 @@
             font-size: 20px;
             opacity: 1;
             color: #575791;
+            transition: opacity .3s, color .3s;
         }
 
         .app_timeline--current .app_timeline__company {
             color: #FFF;
+        }
+
+        a.app_timeline__company:hover {
+            color: #5151db;
+        }
+
+        .app_timeline--current a.app_timeline__company:hover {
+            color: #FFF;
+            opacity: .7;
         }
 
         .app_timeline__title {
@@ -360,6 +411,7 @@
         .app_timeline__content {
             line-height: 25px;
             letter-spacing: .05em;
+            margin-top: 3px;
         }
 
         .app_timeline__content ul {
@@ -389,31 +441,30 @@
             opacity: 1;
             color: #7bacf9;
         }
+
+        .app_cv {
+            text-align: center;
+        }
+
+        .app_cv a {
+            border: 2px solid #e94560;
+            border-radius: 5px;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            color: #e94560;
+            transition: .4s;
+        }
+
+        .app_cv a:hover {
+            color: #FFF;
+            background: #e94560;
+        }
         
         @media screen and (max-width: 767px) {
             .desktop {
                 display: none;
-            }
-        }
-
-        @media screen and (min-width: 768px) and (min-height: 500px) {
-            .app_logo, .app_nav {
-                position: fixed;
-                opacity: 1;
-                transition: opacity .4s .2s;
-            }
-
-            .app_hide_nav .app_logo, 
-            .app_hide_nav .app_nav {
-                opacity: 0;
-            }
-
-            .target {
-                position: absolute;
-            }
-
-            .app_skills {
-                padding-top: 120px;
             }
         }
 
@@ -496,6 +547,36 @@
             }
         }
 
+        @media screen and (min-width: 768px) and (min-height: 500px) {
+            .app_logo, .app_nav {
+                position: fixed;
+                opacity: 1;
+                transition: opacity .4s .2s;
+            }
+
+            .app_hide_nav .app_logo, 
+            .app_hide_nav .app_nav {
+                opacity: 0;
+            }
+
+            .target {
+                position: absolute;
+            }
+
+            .app_skills {
+                padding-top: 120px;
+            }
+        }
+
+        @media screen and (min-width: 1024px) and (min-height: 500px) {
+            .app_welcome__content {
+                line-height: 130px;
+                height: 130px;
+                margin-top: -65px;
+                font-size: 130px;
+            }
+        }
+
         .app_animate {
             opacity: 0;
             transition: opacity .4s, transform .4s;
@@ -525,7 +606,7 @@
         </div>
     </div>
     <div class="app_nav">
-        <a class="app_nav__item app_nav__item--cv" href="https://ianisbrebion.fr/public/upload/CV-Ianis-Brebion.pdf" target="_blank"><span class="mobile">CV</span><span class="desktop">Curriculum Vitae</span></a>       
+        <a class="app_nav__item app_nav__item--cv" href="/public/upload/CV-Ianis-Brebion.pdf" target="_blank"><span class="mobile">CV</span><span class="desktop">Curriculum Vitae</span></a>       
         <a class="app_nav__item" href="https://twitter.com/lemonkii" target="_blank">Twitter</a>       
         <a class="app_nav__item" href="https://www.linkedin.com/in/ianisbrebion/" target="_blank">LinkedIn</a>       
     </div>
@@ -534,50 +615,52 @@
             <div class="app_welcome__content__before">ようこそ</div>
             <div class="app_welcome__content__main">Bienvenue</div>
         </div>
+        <div class="app_welcome__photo"></div>
     </div>
-    <div class="app_welcome__scroll">
+    <div class="app_welcome__scroll app_noselect">
         <div class="app_welcome__scroll__ball"></div>
     </div>
     <div id="skills" class="target"></div>
-    <div class="app_skills__title app_animate app_animate--slow">Skills</div>
-    <div class="app_skills">
-        <div class="app_skill app_animate app_animate--top">
-            <div class="app_skill__title">
-                Back
+    <div class="app_content__bg app_content__bg--alt">
+        <div class="app_skills">
+            <div class="app_skill app_animate app_animate--top">
+                <div class="app_skill__title">
+                    Back
+                </div>
+                <ul>
+                    <li>PHP</li>
+                    <li>Symfony</li>
+                    <li>Wordpress</li>
+                    <li>Prestashop</li>
+                    <li>ReactJS</li>
+                </ul>
             </div>
-            <ul>
-                <li>PHP</li>
-                <li>Symfony</li>
-                <li>Wordpress</li>
-                <li>Prestashop</li>
-                <li>ReactJS</li>
-            </ul>
-        </div>
-        <div class="app_skill app_animate app_animate--top">
-            <div class="app_skill__title">
-                Front
+            <div class="app_skill app_animate app_animate--top">
+                <div class="app_skill__title">
+                    Front
+                </div>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Javascript</li>
+                    <li>ReactJS</li>
+                </ul>
             </div>
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Javascript</li>
-                <li>ReactJS</li>
-            </ul>
-        </div>
-        <div class="app_skill app_animate app_animate--top">
-            <div class="app_skill__title">
-                Autre
+            <div class="app_skill app_animate app_animate--top">
+                <div class="app_skill__title">
+                    Autre
+                </div>
+                <ul>
+                    <li>Linux</li>
+                    <li>Git</li>
+                    <li>Scrum</li>
+                    <li>SEO</li>
+                    <li>Anglais</li>
+                </ul>
             </div>
-            <ul>
-                <li>Linux</li>
-                <li>Git</li>
-                <li>Scrum</li>
-                <li>SEO</li>
-                <li>Anglais</li>
-            </ul>
         </div>
     </div>
-    <div class="app_content__bg app_content__bg--alt">
+    <div class="app_content__bg">
         <div class="app_content">
             <div class="app_timelines">
                 <div class="app_title app_animate app_animate--slow">Expérience professionnelle</div>
@@ -658,7 +741,7 @@
             </div>
         </div>
     </div>
-    <div class="app_content__bg">
+    <div class="app_content__bg app_content__bg--alt">
         <div class="app_content">
             <div class="app_timelines">
                 <div class="app_title app_animate app_animate--slow">Formation</div>
@@ -722,11 +805,12 @@
             </div>
         </div>
     </div>
-    <div class="app_content__bg app_content__bg--alt">
+    <div class="app_content__bg">
         <div class="app_content">
             <div class="app_timelines">
                 <div class="app_title app_animate app_animate--slow">Autre</div>
-                <div style="display: none;" class="app_animate app_animate--top app_timeline">
+                <!--
+                <div class="app_animate app_animate--top app_timeline">
                     <div class="app_timeline__date">
                         2019 - Aujourd'hui
                     </div>
@@ -747,12 +831,13 @@
                         </ul>
                     </div>
                 </div>
+                -->
                 <div class="app_animate app_animate--top app_timeline">
                     <div class="app_timeline__date">
                         2015
                     </div>
                     <div class="app_timeline__title">
-                        Développeur / Designer
+                        Développeur
                         <span class="app_timeline__company">
                             @SoNeMo
                         </span>
@@ -772,7 +857,7 @@
                         2014
                     </div>
                     <div class="app_timeline__title">
-                        Développeur / Designer
+                        Développeur
                         <span class="app_timeline__company">
                             @Brand440
                         </span>
@@ -794,7 +879,7 @@
                         2013
                     </div>
                     <div class="app_timeline__title">
-                        Développeur / Designer
+                        Développeur &amp; Designer
                         <span class="app_timeline__company">
                             @SayWhatYouPlay
                         </span>
@@ -811,6 +896,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="app_content__bg app_content__bg--alt">
+        <div class="app_cv">
+            <a href="/public/upload/CV-Ianis-Brebion.pdf" target="_blank" class="app_noselect">Curriculum Vitae</a>
         </div>
     </div>
     <script>
@@ -871,8 +961,42 @@
                 }
             }
 
+            if (scrollPosition > 100) {
+                document.querySelector('.app_welcome__scroll').classList.add('app_welcome__scroll--hidden');
+            } else {
+                document.querySelector('.app_welcome__scroll').classList.remove('app_welcome__scroll--hidden');
+            }
+
             previousScrollPosition = window.pageYOffset;
         }
+
+        const keySequence = [];
+        let konamiString = '';
+        const konamiCode = [
+            'ArrowUp',
+            'ArrowUp',
+            'ArrowDown',
+            'ArrowDown',
+            'ArrowLeft',
+            'ArrowRight',
+            'ArrowLeft',
+            'ArrowRight',
+            'b',
+            'a'
+        ];
+
+        document.addEventListener('keyup', function(e) {
+            keySequence.push(e.key);
+            keySequence.splice(
+                -konamiCode.length - 1, 
+                keySequence.length - konamiCode.length
+            );
+            konamiString = konamiCode.join('');
+
+            if (keySequence.join('').includes(konamiString)) {
+                document.querySelector('.app_welcome__photo').classList.add('app_welcome__photo--visible');
+            }
+        });
     </script>
 </body>
 </html>
