@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+let allPosts = await Astro.fetchContent('./blog/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
+// Avoid weird bug where post is not defined
+let post = {};
+
+---
+<BaseLayout title="Blog">
+  <div class="container container--small container--padding">
+    <h1 class="title">Blog</h1>
+    <p class="intro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, ducimus debitis, dignissimos earum optio suscipit nulla totam minima temporibus, laboriosam consectetur quasi sit ut error. Atque neque omnis quia asperiores?</p>
+    {allPosts.map((post) => 
+      <article>
+        <a href={post.url}>
+          <h1 class="title title--small">{post.title}</h1>
+        </a>
+        <div class="post__date post__date--left">{(new Date(post.publishDate)).toLocaleString('en', {day: 'numeric', weekday: 'long', month: 'long', year: 'numeric'})}</div>
+      </article>
+    )}
+  </div>
+</BaseLayout>
