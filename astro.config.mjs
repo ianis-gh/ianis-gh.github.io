@@ -9,8 +9,9 @@
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
   // Enable the Preact renderer to support Preact JSX components.
+  projectRoot: "./",
   buildOptions: {
-    site: "https://ianisbrebion.fr", // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
+    site: "https://ianisbrebion.fr/", // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
     sitemap: false, // Generate sitemap (set to "false" to disable)
   },
   renderers: ["@astrojs/renderer-preact"],
