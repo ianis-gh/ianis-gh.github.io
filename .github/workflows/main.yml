@@ -4,7 +4,7 @@
 # Remember to add API_TOKEN_GITHUB in repo Settings > Secrets as well!
 env:
   githubEmail: ianisbrebion@gmail.com
-  deployToRepo: lemonkii.github.io
+  deployToRepo: LeMonkii.github.io
 
 name: Github Pages Astro CI
 
