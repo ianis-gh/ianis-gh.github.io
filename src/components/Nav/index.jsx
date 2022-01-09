@@ -45,9 +45,9 @@ class Nav extends Component {
       <div className="nav__container">
         <nav className={`nav ${(!this.state.display && "nav--hide") || ""}`}>
           <a href="/">Ianis Brébion</a>
-          <a href="/contact">Contact</a>
-          {config.blogEnable && <a href="/blog">Blog</a>}
-          <a href="/about">Présentation</a>
+          <a href="/contact/">Contact</a>
+          {config.blogEnable && <a href="/blog/">Blog</a>}
+          <a href="/about/">Présentation</a>
         </nav>
       </div>
     );
