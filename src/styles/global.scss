@@ -183,6 +183,19 @@ a {
   }
 }
 
+.links {
+  display: flex;
+  gap: 20px;
+
+  > a {
+    flex: 1;
+  }
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
+}
+
 .title {
   background: rgb(115, 86, 176);
   background: linear-gradient(
@@ -296,6 +309,7 @@ a {
   display: flex;
   align-items: center;
   width: 100%;
+  text-align: center;
 }
 
 .welcome__title {
@@ -365,26 +379,27 @@ a {
 
   a {
     font-weight: bold;
-  }
-}
-
-.links {
-  display: flex;
-  gap: 20px;
-
-  > a {
-    flex: 1;
-  }
-
-  @media screen and (max-width: 400px) {
-    flex-direction: column;
+    text-decoration: none;
   }
 }
 
 .welcome__links {
-  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 2em;
+  grid-template-columns: 1fr 1fr;
 
-  @extend .links;
+  a {
+    font-weight: bold;
+    text-decoration: none;
+
+    span {
+      position: relative;
+      border-bottom: 2px dotted $colorPrimary;
+    }
+  }
 }
 
 .welcome__links_s {
@@ -577,8 +592,11 @@ a {
     left: -20px;
     position: absolute;
     background: $colorPrimary;
-    border-radius: 4px;
-    box-shadow: 10px 10px rgba($colorPrimary, 0.1);
+
+    @media screen and (min-width: 600px) {
+      border-radius: 4px;
+      box-shadow: 10px 10px rgba($colorPrimary, 0.1);
+    }
   }
 
   margin-bottom: 3em;
