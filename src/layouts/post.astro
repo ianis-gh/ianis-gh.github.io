@@ -5,13 +5,12 @@ import Footer from '../components/Footer/index.jsx';
 
 const { title, description, content } = Astro.props;
 ---
-
 <html lang="fr">
 <head>
   <MainHead title={title} description={description} />
 </head>
 <body>
-  <Nav client:idle />
+  <Nav />
   <slot></slot>
   <Footer />
 </body>
