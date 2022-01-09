@@ -437,6 +437,7 @@ a {
 .skill_list {
   display: flex;
   flex-wrap: wrap;
+  gap: 2em 0;
   align-items: top;
   justify-content: center;
 
@@ -465,13 +466,12 @@ a {
 
 .skill_title {
   text-transform: uppercase;
-  color: $colorBackgroundAlt;
+  color: $colorPrimary;
   margin: 0;
-  opacity: 0.3;
-  text-shadow: 1px 1px 0px $colorPrimary, -1px 1px 0px $colorPrimary,
-    1px -1px 0px $colorPrimary, -1px -1px 0px $colorPrimary;
+  opacity: 1;
   transform: scale(1);
-  letter-spacing: 0.2em;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.1em;
   transform-origin: 50% 0;
   font-size: 1.5em;
 }
@@ -480,7 +480,6 @@ a {
   position: relative;
   text-align: center;
   overflow: hidden;
-  margin-top: 2em;
   font-weight: 600;
   text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
 
@@ -506,8 +505,8 @@ a {
 
 .experience__date {
   text-transform: uppercase;
-  opacity: 0.2;
   font-weight: bold;
+  font-size: 0.8em;
 }
 
 .experience__title {
@@ -516,9 +515,9 @@ a {
   margin: 0;
 
   .experience__company {
-    opacity: 0.5;
     text-decoration: none;
     display: inline;
+    font-size: 0.8em;
   }
 }
 
