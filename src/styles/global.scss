@@ -232,7 +232,7 @@ a {
     text-decoration: none;
     font-size: 0.8em;
     color: $colorPrimary;
-    transition: 0.2s;
+    transition: color 0.2s, background 0.2s;
 
     &:hover {
       background-color: $colorPrimary;
