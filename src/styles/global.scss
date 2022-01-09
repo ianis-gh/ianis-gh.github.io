@@ -240,6 +240,18 @@ a {
   }
 }
 
+//
+.image_container {
+  width: 100px;
+  margin: auto;
+  text-align: center;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 // Contact
 .contact {
   border-radius: 4px;
