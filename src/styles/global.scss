@@ -382,6 +382,43 @@ a {
   @extend .links;
 }
 
+.welcome__links_s {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+  bottom: 30px;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    vertical-align: bottom;
+
+    + a {
+      margin-left: 10px;
+    }
+
+    &.welcome__links_s__li svg {
+      width: 21px;
+      height: 21px;
+    }
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: $colorSecondary;
+    transition: fill 0.4s;
+  }
+
+  a:hover svg {
+    fill: $colorPrimary;
+  }
+}
+
 .error__links {
   max-width: 370px;
   margin: auto;
