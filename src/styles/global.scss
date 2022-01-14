@@ -150,17 +150,17 @@ a {
     color: $colorPrimary;
     transition: 0.4s;
     font-weight: 600;
+    letter-spacing: -0.05em;
 
     &:first-child {
       float: left;
-      background: rgb(225, 93, 81);
-      background: linear-gradient(
-        238deg,
-        rgba(225, 93, 81, 1) 0%,
-        rgba(237, 176, 122, 1) 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: rgb(225, 93, 81);
+      transition: color 0.5s;
+      font-weight: 700;
+
+      &:hover {
+        color: $colorPrimary;
+      }
     }
 
     &:not(:first-child):after {
@@ -187,8 +187,6 @@ a {
     &:not(:first-child) {
       margin-left: 15px;
     }
-
-    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -324,28 +322,31 @@ a {
 // Contact
 .contact {
   border-radius: 4px;
-  padding: 20px;
   color: $colorPrimary;
-  text-decoration: underline;
-  text-align: center;
   cursor: pointer;
+  margin-top: 2em;
 
   span {
     font-weight: 600;
+    border-bottom: 2px dotted;
   }
 
   > div {
     border-radius: 4px;
-    text-align: center;
     cursor: pointer;
+
+    > div + div {
+      margin-top: 1em;
+    }
   }
 
   a {
-    display: block;
     color: $colorPrimary;
+    border-bottom: 2px dotted;
+    text-decoration: none;
 
-    & + a {
-      margin-top: 1em;
+    &:hover {
+      color: $colorSecondary;
     }
   }
 }

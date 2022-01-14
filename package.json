@@ -9,7 +9,10 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.22.0",
-    "@astrojs/renderer-preact": "^0.3.1"
+    "@astrojs/renderer-preact": "^0.3.1",
+    "astro": "^0.22.0"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.1"
   }
 }
