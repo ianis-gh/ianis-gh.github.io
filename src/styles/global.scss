@@ -128,6 +128,8 @@ a {
       opacity: 1;
     }
   }
+
+  padding-bottom: 15px;
 }
 
 .nav {
@@ -136,6 +138,15 @@ a {
   width: 100%;
   transition: opacity 0.4s;
   font-size: 1em;
+
+  background: rgba($colorBackground, 0.8);
+  padding-bottom: 15px;
+
+  &:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
 
   &.nav--hide {
     opacity: 0;
