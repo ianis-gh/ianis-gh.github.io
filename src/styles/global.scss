@@ -1,7 +1,8 @@
 @import "vars";
 
-$fontSansSerif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$fontSansSerif: Karla, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
 $fontSerif: Georgia, "Times New Roman", Times, serif;
 
 *,
@@ -16,8 +17,9 @@ body {
 }
 
 html {
-  font-size: 16px;
+  font-size: 18px;
   font-family: $fontSansSerif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -57,6 +59,12 @@ body {
 
 a {
   color: $colorPrimary;
+  position: relative;
+  transition: color 0.4s;
+
+  &:hover {
+    color: $colorSecondary;
+  }
 }
 
 .wrapper {
@@ -95,7 +103,7 @@ a {
   }
 
   &.container--small {
-    max-width: 500px;
+    max-width: 600px;
   }
 
   &.container--mini {
@@ -127,6 +135,7 @@ a {
   display: block;
   width: 100%;
   transition: opacity 0.4s;
+  font-size: 1em;
 
   &.nav--hide {
     opacity: 0;
@@ -216,6 +225,47 @@ a {
   }
 }
 
+.page__header__title {
+  background: rgb(115, 86, 176);
+  background: linear-gradient(
+    238deg,
+    rgba(115, 86, 176, 1) 0%,
+    rgba(103, 124, 233, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.05em;
+  text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
+  font-size: 2.5em;
+  display: inline-block;
+  font-weight: 800;
+}
+
+.page__header {
+  .page__header__intro {
+  }
+
+  .page__header__image {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .page__header__content {
+      max-width: 600px;
+    }
+
+    .page__header__image {
+      display: block;
+      opacity: 0.5;
+    }
+  }
+}
+
 .subtitle {
   color: $colorPrimary;
   letter-spacing: -0.05em;
@@ -246,7 +296,7 @@ a {
     border-radius: 4px;
     padding: 7px 10px 7px;
     display: inline-block;
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
     font-size: 0.8em;
     color: $colorPrimary;
@@ -316,7 +366,7 @@ a {
   position: relative;
   text-align: center;
   font-size: 2.5em;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -0.05em;
   text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 0.5em;
@@ -337,11 +387,12 @@ a {
     width: 20px;
     left: 65%;
     top: -30px;
-    transform: rotate(30deg) scale(1);
+    will-change: transform;
+    transform: rotate3d(0, 0, 1, 30deg) scale(1);
   }
 
   &:after {
-    transform: rotate(60deg) scale(1);
+    transform: rotate3d(0, 0, 1, 60deg) scale(1);
     left: 35%;
     top: -50px;
     background: #4d4dff;
@@ -378,7 +429,7 @@ a {
   font-size: 1.2em;
 
   a {
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
   }
 }
@@ -392,7 +443,7 @@ a {
   grid-template-columns: 1fr 1fr;
 
   a {
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
 
     span {
@@ -485,18 +536,46 @@ a {
 
 // About
 .about__links {
-  max-width: 370px;
-  margin: auto;
-  margin-top: 1em;
-  @extend .links;
+  a {
+    font-weight: 600;
+    text-decoration: none;
+    & + a {
+      margin-left: 30px;
+    }
+
+    span {
+      border-bottom: 2px dotted $colorPrimary;
+    }
+  }
 }
 
 .skill_list {
+  position: relative;
+  margin-top: 4em;
   display: flex;
   flex-wrap: wrap;
   gap: 2em 0;
+  padding: 15px 0;
   align-items: top;
   justify-content: center;
+  color: #fff;
+  text-align: center;
+
+  &:before {
+    position: absolute;
+    content: "";
+    background: $colorPrimary;
+    display: block;
+    top: -15px;
+    right: -15px;
+    bottom: -15px;
+    left: -15px;
+    background: linear-gradient(238deg, #7356b0 0%, #677ce9 100%);
+    background: linear-gradient(238deg, #e15d51 0%, #4d4dff 100%);
+    background: linear-gradient(238deg, #7356b0 0%, #677ce9 100%);
+    border-radius: 4px;
+    box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
+  }
 
   .skill {
     width: 100%;
@@ -523,31 +602,24 @@ a {
 
 .skill_title {
   text-transform: uppercase;
-  color: $colorPrimary;
   margin: 0;
-  opacity: 1;
-  transform: scale(1);
-  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-  letter-spacing: 0.1em;
-  transform-origin: 50% 0;
   font-size: 1.5em;
+  letter-spacing: 0.1em;
+  mix-blend-mode: soft-light;
 }
 
 .skill {
   position: relative;
-  text-align: center;
   overflow: hidden;
-  font-weight: 600;
-  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
 
   ul {
     list-style: none;
-    letter-spacing: 0.1em;
+    font-weight: 600;
     padding: 0;
     margin: 0;
 
     li {
-      margin-bottom: 0.2em;
+      margin-top: 0.2em;
     }
   }
 }
@@ -556,19 +628,21 @@ a {
 }
 
 .experience {
-  margin-top: 2em;
+  margin-top: 3em;
   position: relative;
 }
 
 .experience__date {
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8em;
+  font-weight: 700;
+  font-size: 1em;
+  color: #e6d999;
 }
 
 .experience__title {
   color: $colorPrimary;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.2em;
   margin: 0;
 
   .experience__company {
@@ -578,34 +652,40 @@ a {
   }
 }
 
-.experience__content {
+.experience__list {
   margin: 0;
-}
+  padding: 0;
+  margin-top: 0.5em;
+  opacity: 0.7;
+  line-height: 0.7em;
+  font-size: 0.7em;
 
-.experience.experience--current {
-  &:before {
-    content: "";
-    display: block;
-    top: -20px;
-    right: -20px;
-    bottom: -20px;
-    left: -20px;
-    position: absolute;
-    background: $colorPrimary;
+  li {
+    display: inline-block;
 
-    @media screen and (min-width: 600px) {
-      border-radius: 4px;
-      box-shadow: 10px 10px rgba($colorPrimary, 0.1);
+    & + li {
+      margin-left: 5px;
     }
   }
+}
 
-  margin-bottom: 3em;
+.experience__content {
+  margin-top: 0.5em;
+}
 
-  .experience__date,
-  .experience__title,
+@media screen and (min-width: 1024px) {
+  .experience__date {
+    height: 20px;
+    transform: rotate(90deg) translate(0, -20px);
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    transform-origin: 0 0;
+  }
+
   .experience__content,
-  .experience__company {
-    color: $colorLightMax;
-    position: relative;
+  .experience__list,
+  .experience__title {
+    padding-left: 30px;
   }
 }

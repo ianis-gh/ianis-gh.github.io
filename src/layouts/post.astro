@@ -10,7 +10,7 @@ const { title, description, content } = Astro.props;
   <MainHead title={title} description={description} />
 </head>
 <body>
-  <Nav />
+  <Nav client:idle/>
   <slot></slot>
   <Footer />
 </body>
