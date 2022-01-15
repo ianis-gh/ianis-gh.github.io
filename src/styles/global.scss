@@ -150,6 +150,7 @@ a {
       width: 100%;
       background: $colorBackground;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      opacity: 0.9;
     }
   }
 
@@ -297,6 +298,11 @@ a {
   text-align: center;
   margin-bottom: 0;
   font-size: 1.5em;
+  span {
+    background: linear-gradient(238deg, #7356b0 0%, #677ce9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .intro {
@@ -676,7 +682,6 @@ a {
 .experience__date {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1em;
   color: #e6d999;
 }
 
@@ -686,10 +691,23 @@ a {
   font-size: 1.2em;
   margin: 0;
 
+  .experience__job {
+    display: inline;
+    background: linear-gradient(238deg, #7356b0 0%, #677ce9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .experience__company {
     text-decoration: none;
-    display: inline;
+    display: inline-block;
     font-size: 0.8em;
+    color: $colorSecondary;
+    text-overflow: nowrap;
+  }
+
+  a.experience__company:hover {
+    opacity: 0.7;
   }
 }
 
@@ -697,6 +715,7 @@ a {
   margin: 0;
   padding: 0;
   margin-top: 0.5em;
+  margin-bottom: 0.5em;
   opacity: 0.7;
   line-height: 0.7em;
   font-size: 0.7em;
@@ -710,23 +729,28 @@ a {
   }
 }
 
+.experience__intro {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .experience__content {
-  margin-top: 0.5em;
+  font-size: 0.8em;
+  margin-top: 0.2em;
 }
 
 @media screen and (min-width: 1024px) {
+  .experience {
+    padding-left: 30px;
+  }
   .experience__date {
+    font-size: 1.2em;
     height: 20px;
     transform: rotate(90deg) translate(0, -20px);
     position: absolute;
-    left: 0;
+    left: 5px;
+    top: 4px;
     display: inline-block;
     transform-origin: 0 0;
-  }
-
-  .experience__content,
-  .experience__list,
-  .experience__title {
-    padding-left: 30px;
   }
 }

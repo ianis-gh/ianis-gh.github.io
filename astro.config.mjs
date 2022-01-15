@@ -14,5 +14,9 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     site: "https://ianisbrebion.fr/", // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
     sitemap: false, // Generate sitemap (set to "false" to disable)
   },
+  devOptions: {
+    hostname: "0.0.0.0",
+    port: 3000,
+  },
   renderers: ["@astrojs/renderer-preact"],
 });
