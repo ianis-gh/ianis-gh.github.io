@@ -3,13 +3,13 @@ import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav/index.jsx';
 import Footer from '../components/Footer/index.jsx';
 
-const { title, description } = Astro.props;
+const { bodyClass, title, description } = Astro.props;
 ---
 <html lang="fr">
 <head>
   <MainHead title={title} description={description} />
 </head>
-<body>
+<body class={bodyClass}>
   <Nav client:idle/>
   <slot></slot>
   <Footer />

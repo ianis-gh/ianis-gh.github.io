@@ -212,6 +212,10 @@ a {
   }
 }
 
+.body--home .nav:before {
+  display: none;
+}
+
 .links {
   display: flex;
   gap: 20px;
@@ -595,6 +599,16 @@ a {
     left: -15px;
     background: linear-gradient(238deg, #7356b0 0%, #677ce9 100%);
     background: linear-gradient(238deg, #e15d51 0%, #4d4dff 100%);
+    // https://www.joshwcomeau.com/gradient-generator/
+    background: linear-gradient(
+      240deg,
+      hsl(5deg 71% 60%) 0%,
+      hsl(346deg 80% 58%) 3%,
+      hsl(329deg 82% 51%) 10%,
+      hsl(313deg 92% 44%) 21%,
+      hsl(286deg 68% 51%) 46%,
+      hsl(240deg 100% 65%) 100%
+    );
     border-radius: 4px;
     box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
 
