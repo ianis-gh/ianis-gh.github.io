@@ -364,30 +364,71 @@ a {
 .contact {
   border-radius: 4px;
   color: $colorPrimary;
-  cursor: pointer;
   margin-top: 2em;
 
-  span {
+  .contact__toggle {
     font-weight: 600;
-    border-bottom: 2px dotted;
-  }
-
-  > div {
+    background: $colorPrimary;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
     border-radius: 4px;
+    display: block;
+    max-width: 300px;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    background: linear-gradient(
+      240deg,
+      hsl(5deg 71% 60%) 0%,
+      hsl(346deg 80% 58%) 3%,
+      hsl(329deg 82% 51%) 10%,
+      hsl(313deg 92% 44%) 21%,
+      hsl(286deg 68% 51%) 46%,
+      hsl(240deg 100% 65%) 100%
+    );
+    box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
 
-    > div + div {
-      margin-top: 1em;
+    &.contact__toggle--enabled {
+      border: none;
+      background: none;
+      display: none;
     }
   }
 
   a {
-    color: $colorPrimary;
-    border-bottom: 2px dotted;
+    color: #fff;
     text-decoration: none;
 
     &:hover {
-      color: $colorSecondary;
+      border-bottom: 2px dotted;
+    }
+  }
+
+  .contact__content {
+    padding: 25px;
+    max-width: 300px;
+    color: #fff;
+    border-radius: 4px;
+    background: linear-gradient(
+      240deg,
+      hsl(5deg 71% 60%) 0%,
+      hsl(346deg 80% 58%) 3%,
+      hsl(329deg 82% 51%) 10%,
+      hsl(313deg 92% 44%) 21%,
+      hsl(286deg 68% 51%) 46%,
+      hsl(240deg 100% 65%) 100%
+    );
+    box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
+
+    > div + div {
+      margin-top: 1em;
+    }
+
+    @media screen and (max-width: $displaySmall) {
+      max-width: none;
     }
   }
 }

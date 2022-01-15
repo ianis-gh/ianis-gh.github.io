@@ -14,16 +14,31 @@ function Contact() {
 
   return (
     <div className="contact" onClick={() => displayInformations()}>
-      {!displayContact && (
-        <span>Cliquez ici pour afficher mes coordonnées</span>
-      )}
+      <div
+        className={
+          (displayContact && `contact__toggle contact__toggle--enabled`) ||
+          `contact__toggle `
+        }
+      >
+        {(displayContact && ``) || `Cliquez ici pour afficher mes coordonnées`}
+      </div>
       {displayContact && (
         <div className="contact__content">
-          <div>
-            <a href="mailto:ianisbrebion@gmail.com">ianisbrebion@gmail.com</a>
+          <div className="contact__location">
+            <span>Paris, France</span>
           </div>
-          <div>
-            <a href="tel:+33679399825">+33 6 79 39 98 25</a>
+          <div className="contact__email">
+            <a
+              href={(displayContact && `mailto:ianisbrebion@gmail.com`) || `#`}
+            >
+              {(displayContact && `ianisbrebion@gmail.com`) ||
+                `xxxxxxxxxxxx@xxxx.xxx`}
+            </a>
+          </div>
+          <div className="contact__phone">
+            <a href={(displayContact && `tel:+33679399825`) || `#`}>
+              {(displayContact && `+33 6 79 39 98 25`) || `XX XX XX XX XX`}
+            </a>
           </div>
         </div>
       )}
