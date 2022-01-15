@@ -43,6 +43,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 90;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
   }
 
   &:after {
@@ -54,6 +55,7 @@ body {
       rgba(115, 86, 176, 1) 0%,
       rgba(103, 124, 233, 1) 100%
     );
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) inset;
   }
 }
 
@@ -121,26 +123,35 @@ a {
   left: 0;
   width: 100%;
   z-index: 9;
-  padding: 0 15px;
 
   &:hover {
     nav {
       opacity: 1;
     }
   }
-
-  padding-bottom: 15px;
 }
 
 .nav {
-  padding-top: 30px;
   display: block;
+  position: relative;
   width: 100%;
   transition: opacity 0.4s;
   font-size: 1em;
+  padding: 30px 15px 15px;
 
-  background: rgba($colorBackground, 0.8);
-  padding-bottom: 15px;
+  @media screen and (max-width: 768px) {
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: $colorBackground;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  }
 
   &:after {
     display: table;
@@ -584,9 +595,13 @@ a {
     left: -15px;
     background: linear-gradient(238deg, #7356b0 0%, #677ce9 100%);
     background: linear-gradient(238deg, #e15d51 0%, #4d4dff 100%);
-    background: linear-gradient(238deg, #7356b0 0%, #677ce9 100%);
     border-radius: 4px;
     box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
+
+    @media screen and (max-width: 900px) {
+      border-radius: 0;
+      box-shadow: none;
+    }
   }
 
   .skill {
