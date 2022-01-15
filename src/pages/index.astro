@@ -2,7 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { config } from '../config.js';
 ---
-<BaseLayout bodyClass="body--home" title="Ianis Brébion" description="Développeur Full Stack Symfony/ReactJS. Passionné par le web depuis tout petit, je réalise des projets eco-responsable chez GreenFlex">
+<BaseLayout 
+  disableScrollNav={true} 
+  bodyClass="body--home" 
+  title="Ianis Brébion" 
+  description="Développeur Full Stack Symfony/ReactJS. Passionné par le web depuis tout petit, je réalise des projets eco-responsable chez GreenFlex"
+>
   <div class="welcome">
     <div class="container container--mini container--padding">
       <div class="welcome__title">
