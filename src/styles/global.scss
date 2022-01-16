@@ -391,6 +391,11 @@ a {
     );
     box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
 
+    @media screen and (max-width: $displaySmall) {
+      max-width: none;
+      width: 100%;
+    }
+
     &.contact__toggle--enabled {
       border: none;
       background: none;
