@@ -1,16 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { config } from '../config.js';
+
+let allPosts = await Astro.fetchContent('/src/pages/blog/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()).slice(0, 2);
 ---
-<BaseLayout title="Erreur 404">
-  <div class="container container--small container--padding_large">
-    <h1 class="title">On s'est perdu</h1>
-    <p class="intro">Mais pas de panique, voici quelques liens un peu plus intéressant (j'espère) qu'une page 404</p>
-    <div class="error__links">
-      <a href="/about/" class="link link--block">Présentation</a>
-      {config.blogEnable && <a href="/blog/" class="link link--block">Blog</a>}
-      <a href="/" class="link link--block">Accueil</a>
+<BaseLayout title="Erreur 404" bodyClass="body--alt">
+  <div class="wrapper">
+    <div class="container container--padding_large">
+      <div class="page__header">
+        <div class="page__header__content">
+          <h1 class="page__header__title">On est perdu</h1>
+          <p class="page__header__intro">
+            Mais pas de panique, voici quelques liens un peu plus intéressant (j'espère) qu'une page 404
+          </p>
+          <div class="error__links">
+            <a href="/about/"><span>Présentation</span></a>
+            {config.blogEnable && <a href="/blog/"><span>Blog</span></a>}
+            <a href="/"><span>Accueil</span></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+    {config.blogEnable && (
+      <div class="wrapper wrapper--alt">
+        <div class="container container--padding_bottom">
+          <h2 class="page__header__title">Derniers articles</h2>
+          <div class="posts padding_top">
+            {allPosts.map((post) => 
+              <article class="post">
+                <div class="post__date">
+                  {(new Date(post.publishDate)).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                <h2 class="post__title"><a href={post.url}>{post.title}</a></h2>
+                <p class="post_description">{post.description}</p>
+              </article>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
 </BaseLayout>
 

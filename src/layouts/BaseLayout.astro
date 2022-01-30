@@ -12,6 +12,5 @@ const { disableScrollNav, bodyClass, title, description } = Astro.props;
 <body class={bodyClass}>
   {disableScrollNav && <Nav/> || <Nav client:idle/>}
   <slot></slot>
-  <Footer />
 </body>
 </html>

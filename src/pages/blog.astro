@@ -7,16 +7,24 @@ allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(
 let post = {};
 
 ---
-<BaseLayout title="Blog">
-  <div class="container container--small container--padding">
-    <h1 class="title">Blog</h1>
-    <p class="intro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, ducimus debitis, dignissimos earum optio suscipit nulla totam minima temporibus, laboriosam consectetur quasi sit ut error. Atque neque omnis quia asperiores?</p>
+<BaseLayout title="Blog">  
+  <div class="container container--padding_large">
+    <div class="page__header">
+      <div class="page__header__content">
+        <h1 class="page__header__title">Blog</h1>
+        <p class="page__header__intro">
+          De temps en temps j'essaye d'écrire des articles pour partager mes connaissances
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container container--padding_bottom posts">
     {allPosts.map((post) => 
-      <article>
-        <a href={post.url}>
-          <h1 class="title title--small">{post.title}</h1>
-        </a>
-        <div class="post__date post__date--left">{(new Date(post.publishDate)).toLocaleString('en', {day: 'numeric', weekday: 'long', month: 'long', year: 'numeric'})}</div>
+      <article class="post">
+        <div class="post__date">
+          {(new Date(post.publishDate)).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+        <h2 class="post__title"><a href={post.url}>{post.title}</a></h2>
+        <p class="post_description">{post.description}</p>
       </article>
     )}
   </div>

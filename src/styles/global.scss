@@ -27,6 +27,10 @@ body {
   margin: 0;
   padding: 0;
 
+  &.body--alt {
+    background: $colorBackgroundAlt;
+  }
+
   &:before,
   &:after {
     position: fixed;
@@ -70,11 +74,21 @@ a {
 }
 
 .wrapper {
+  background: $colorBackground;
+
   &.wrapper--alt {
     background: $colorBackgroundAlt;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
+}
+
+.padding_top {
+  padding-top: 2em;
 }
 
 .container {
@@ -98,6 +112,10 @@ a {
 
   &.container--padding_bottom {
     padding-bottom: 4em;
+  }
+
+  &.container--padding_bottom_none {
+    padding-bottom: 0em;
   }
 
   &.container--padding_top {
@@ -272,30 +290,39 @@ a {
   text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 0;
   font-size: 2.5em;
+  line-height: 1em;
+  padding: 0 5px 5px 0;
   display: inline-block;
   font-weight: 800;
 }
 
 .page__header {
   .page__header__intro {
+    margin: 0;
   }
 
-  .page__header__image {
-    display: none;
+  .page__header__date {
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 10px;
+  }
+
+  &.page__header--blog {
+    .page__header__content {
+      max-width: none;
+      text-align: center;
+    }
+    margin-bottom: 3em;
+
+    .page__header__intro {
+      font-family: $fontSerif;
+      font-style: italic;
+    }
   }
 
   @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     .page__header__content {
       max-width: 600px;
-    }
-
-    .page__header__image {
-      display: block;
-      opacity: 0.5;
     }
   }
 }
@@ -373,12 +400,13 @@ a {
     text-align: center;
     padding: 15px;
     border-radius: 4px;
-    display: block;
-    max-width: 300px;
-    height: 4em;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-content: center;
     justify-content: center;
+    align-items: center;
+    min-height: 100px;
+
     cursor: pointer;
     background: linear-gradient(
       240deg,
@@ -414,7 +442,6 @@ a {
 
   .contact__content {
     padding: 25px;
-    max-width: 300px;
     color: #fff;
     border-radius: 4px;
     background: linear-gradient(
@@ -427,6 +454,12 @@ a {
       hsl(240deg 100% 65%) 100%
     );
     box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 
     > div + div {
       margin-top: 1em;
@@ -579,51 +612,189 @@ a {
 }
 
 .error__links {
-  max-width: 370px;
-  margin: auto;
+  width: 100%;
+  display: flex;
+  gap: 30px;
   margin-top: 1em;
-  @extend .links;
+  grid-template-columns: 1fr 1fr;
+
+  a {
+    font-weight: 700;
+    text-decoration: none;
+
+    span {
+      position: relative;
+      border-bottom: 2px dotted $colorPrimary;
+    }
+  }
 }
 
 // Blog
-.post__title {
-  color: $colorPrimary;
-  letter-spacing: -0.05em;
-  text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.05);
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
-}
+.posts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 
-.post__date {
-  text-align: center;
-
-  &.post__date--left {
-    text-align: left;
+  h2 {
+    line-height: 0.9;
   }
-  color: $colorDarkLight;
-  font-size: 0.8rem;
+
+  @media screen and (min-width: $displayMedium) {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+
+    .post {
+      min-height: 200px;
+    }
+  }
+
+  .post {
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(#fff, 0.3);
+    padding: 20px;
+    transition: opacity 0.4s, box-shadow 0.4s;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0);
+
+    &:hover {
+      a {
+        box-shadow: 0px -10px rgba($colorPrimary, 0.5) inset;
+      }
+      box-shadow: 15px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    a {
+      transition: color 0.4s, box-shadow 0.4s;
+      box-shadow: 0px -4px rgba($colorPrimary, 0) inset;
+    }
+
+    a:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      content: "";
+      display: block;
+      z-index: 2;
+    }
+  }
+
+  .post:first-child {
+    background: linear-gradient(
+      240deg,
+      hsl(5deg 71% 60%) 0%,
+      hsl(346deg 80% 58%) 3%,
+      hsl(329deg 82% 51%) 10%,
+      hsl(313deg 92% 44%) 21%,
+      hsl(286deg 68% 51%) 46%,
+      hsl(240deg 100% 65%) 100%
+    );
+    border: none;
+
+    .post__date,
+    .post__title a,
+    .post_description {
+      background: none;
+      -webkit-text-fill-color: initial;
+      color: #fff;
+    }
+
+    &:hover {
+      a {
+        box-shadow: 0px -10px rgba(#fff, 0.3) inset;
+      }
+    }
+
+    a {
+      box-shadow: 0px -4px rgba(#fff, 0) inset;
+    }
+  }
+
+  .post__date {
+    text-transform: capitalize;
+    font-weight: 700;
+    color: rgba(#000, 0.2);
+  }
+
+  .post__title {
+    margin: 0;
+    margin-bottom: 10px;
+    a {
+      color: $colorPrimary;
+      position: static;
+      text-decoration: none;
+      background: rgb(115, 86, 176);
+      background: linear-gradient(
+        238deg,
+        rgba(115, 86, 176, 1) 0%,
+        rgba(103, 124, 233, 1) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.05em;
+    }
+  }
+  .post_description {
+    margin: 0;
+  }
 }
 
-.post_content {
-  margin: 30px 0;
+.post__content {
+  font-size: 1em;
+  line-height: 1.45;
   font-family: $fontSerif;
 
-  &:before,
-  &:after {
-    content: "* * *";
-    display: block;
-    text-align: center;
-    color: $colorPrimary;
-  }
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    background: rgb(115, 86, 176);
+    background: linear-gradient(
+      238deg,
+      rgba(115, 86, 176, 1) 0%,
+      rgba(103, 124, 233, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.05em;
 
-.post__tags {
-  text-align: center;
+    font-family: $fontSansSerif;
+    color: $colorPrimary;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  h2 {
+    margin-top: 2.5em;
+  }
+
+  h2 + h3 {
+    margin-top: 1em;
+  }
+
+  ul,
+  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: #363430;
+  }
+
+  a {
+    display: inline-block;
+    color: $colorSecondary;
+    text-decoration: none;
+    box-shadow: 0 -5px rgba($colorSecondary, 0.5) inset;
+  }
+
+  padding-bottom: 3em;
 }
 
 // About
 .about__links {
+  margin-top: 1em;
   a {
     font-weight: 600;
     text-decoration: none;

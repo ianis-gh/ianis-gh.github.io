@@ -3,7 +3,7 @@ import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav/index.jsx';
 import Footer from '../components/Footer/index.jsx';
 
-const { title, description, content } = Astro.props;
+const { title, description, publishDate } = Astro.props.content;
 ---
 <html lang="fr">
 <head>
@@ -11,7 +11,24 @@ const { title, description, content } = Astro.props;
 </head>
 <body>
   <Nav client:idle/>
-  <slot></slot>
+  <div class="container container--padding_large container--padding_bottom_none">
+    <div class="page__header page__header--blog">
+      <div class="page__header__content">
+        <h1 class="page__header__title">{title}</h1>
+        {description && <p class="page__header__intro">
+          {description}
+        </p>}
+        <div class="page__header__date">
+          {(new Date(publishDate)).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container container--medium container--padding_bottom">
+    <div class="post__content">
+      <slot></slot>
+    </div>
+  </div>
   <Footer />
 </body>
 </html>
