@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+<meta name="description" property="og:description" content="Quel SSG j'ai utilisé, pourquoi et comment je l'ai mis en ligne">
+<meta name="viewport" content="width=device-width">
+<title>Comment est construit ce site</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;400;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../assets/global.25207427.css"><link rel="stylesheet" type="text/css" href="../../assets/about.e9fa2495.css">
+
+<script type="module" src="../../assets/comment-est-construit-ce-site.964f8fd6.js"></script></head>
+<body>
+  <astro-root uid="Z1Jeahy"><div class="nav__container"><nav class="nav "><a href="/">Ianis Brébion</a><a href="/contact/">Contact</a><a href="/about/">Présentation</a></nav></div></astro-root>
+  <div class="container container--padding_large container--padding_bottom_none">
+    <div class="page__header page__header--blog">
+      <div class="page__header__content">
+        <h1 class="page__header__title">Comment est construit ce site</h1>
+        <p class="page__header__intro">
+          Quel SSG j'ai utilisé, pourquoi et comment je l'ai mis en ligne
+        </p>
+        <div class="page__header__date">
+          mardi 1 février 2022
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container container--medium container--padding_bottom">
+    <div class="post__content">
+      <p>Ce site internet a été développé avec la volonté qu’il soit extrement leger et performant.</p><p>Pour cela j’ai utilisé le SSG (Static Site Generator) : <a href="https://astro.build/">AstroBuild</a></p><h2 id="astro">Astro</h2><p>Astro est un petit nouveau parmis les SSG, le <a href="https://astro.build/blog/introducing-astro/">premier article mis en ligne</a> l’a été en juin 2021.</p><p>Une communauté s’est très vite formée, le repository ayant déjà 10k stars et le discord environ 4000 membres au moment où j’écris cet article.</p><p>Astro a deux objectifs principaux:</p><ul>
+<li>Permettre aux développeurs d’utiliser leurs framework préférés (React, Preact, Vue, Svelte, etc.)</li>
+<li>Créer des sites 0kb javascript</li>
+</ul><h3 id="liens-utiles">Liens utiles</h3><ul>
+<li><a href="https://github.com/withastro/astro">Github</a></li>
+<li><a href="https://docs.astro.build/en/getting-started/">Documentation</a></li>
+<li><a href="https://astro.build/blog/">Blog</a></li>
+<li><a href="https://discord.com/invite/grF4GTXXYm">Discord</a></li>
+<li><a href="https://twitter.com/astrodotbuild">Twitter</a></li>
+</ul><h2 id="quest-ce-quun-site-statique">Qu’est-ce qu’un site statique</h2><p>Les sites internets “dynamique” ont besoin d’un back-end, c’est à dire un serveur qui va s’occuper de traiter les requêtes de l’utilisateur :</p><ul>
+<li>Connexion a un espace membre</li>
+<li>Soumission d’un formulaire</li>
+<li>Recherche de produit</li>
+<li>etc.</li>
+</ul><p>Lorsque ces besoins peuvent être eviter, on peut utiliser un site statique.</p><p>Un site statique va être générer au moment du déploiement, ainsi toutes les pages existent sur le serveur.</p><p>Lorsqu’un utilisateur essaye d’acceder a la page contact.html, le serveur va simplement chercher celle-ci dans un dossier et la renvoi a l’utilisateur.</p><p>Il est donc possible d’ouvrir le repertoire “build” où se situe tous les fichiers générés, ouvrir un fichier html dans le navigateur et simuler l’expérience exacte que les visiteurs auront.</p><h2 id="mise-en-ligne">Mise en ligne</h2><p>L’avantage d’utiliser un site statique est que les pré-requis sont presque innexistant.</p><p>Il suffit d’un serveur sur lequel vous pouvez envoyer des fichiers HTML et auquel peut être lié un nom de domaine.</p><p>Pour ma part j’utilise pour l’instant GitHub Pages, le site étant hebergé sur GitHub, la mise en ligne est extrêment aisé. A chaque fois que j’envoi une nouvelle version du site, GitHub s’occupe de généré les fichiers statiques et de les mettre à disposition des utilisateurs.</p><h3 id="quelques-hebergeurs-de-sites-statiques">Quelques hebergeurs de sites statiques</h3><ul>
+<li><a href="https://pages.github.com/">Github Pages</a></li>
+<li><a href="https://pages.cloudflare.com/">CloudFlare Pages</a></li>
+<li><a href="https://vercel.com/">Vercel</a></li>
+<li><a href="https://www.netlify.com/">Netlify</a></li>
+</ul><p>Il en existe plein d’autres et vous trouverez toutes les instructions dans la <a href="https://docs.astro.build/en/guides/deploy/">documentation d’astro</a></p><p>En dehors de GitHub, j’ai testé le deploiement de CloudFlare et c’était extrêment rapide, il suffit de parametrer le site en le liant à votre compte GitHub &amp; de sélectionner Astro lorsque CloudFlare vous demande le type de site.</p>
+    </div>
+  </div>
+  <footer class="footer"> </footer>
+</body></html>
