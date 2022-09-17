@@ -909,6 +909,8 @@ a {
   text-transform: uppercase;
   font-weight: 700;
   color: #e6d999;
+  display: block;
+  text-shadow: -1px -1px 0 rgba(#fff, 1), 1px 1px rgba(#000, 0.05);
 }
 
 .experience__title {
@@ -916,6 +918,7 @@ a {
   font-weight: 700;
   font-size: 1.2em;
   margin: 0;
+  display: inline;
 
   .experience__job {
     display: inline;
@@ -929,6 +932,7 @@ a {
     display: inline-block;
     font-size: 0.8em;
     color: $colorSecondary;
+    color: hsl(346deg 80% 58%);
     text-overflow: nowrap;
   }
 
@@ -942,9 +946,9 @@ a {
   padding: 0;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  opacity: 0.7;
   line-height: 0.7em;
-  font-size: 0.7em;
+  color: $colorSecondary;
+  font-size: 1em;
 
   li {
     display: inline-block;
@@ -956,13 +960,12 @@ a {
 }
 
 .experience__intro {
-  margin-top: 0;
+  margin-top: 0.5em;
   margin-bottom: 0;
 }
 
 .experience__content {
-  font-size: 0.8em;
-  margin-top: 0.2em;
+  margin-top: 0.5em;
 }
 
 @media screen and (min-width: 1024px) {
@@ -970,13 +973,5 @@ a {
     padding-left: 30px;
   }
   .experience__date {
-    font-size: 1.2em;
-    height: 20px;
-    transform: rotate(90deg) translate(0, -20px);
-    position: absolute;
-    left: 5px;
-    top: 4px;
-    display: inline-block;
-    transform-origin: 0 0;
   }
 }
